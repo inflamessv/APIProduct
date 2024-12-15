@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService implements ProductI<Product,Long> {
@@ -22,6 +23,10 @@ public class ProductService implements ProductI<Product,Long> {
         if(entity == null){
             throw new IllegalArgumentException("The product entity must not be null");
         }
+        /*Optional<Product>existinProduct=repository.findById(entity.getId());
+        if (existinProduct.isPresent()){
+            throw new ServiceException("Product already exist in db");
+        }*/
         try {
             repository.save(entity);
             log.info("Product has been save successfully:{}",entity); ;
@@ -55,7 +60,7 @@ public class ProductService implements ProductI<Product,Long> {
                     .orElseThrow(() -> new ServiceException("product with the id:"+id+"could not be found "+entity));
 
             existingProduct.setName(entity.getName());
-            existingProduct.setPrecio(entity.getPrecio());
+            existingProduct.setPrice(entity.getPrice());
             existingProduct.setQuantity(entity.getQuantity());
 
             repository.save(existingProduct);

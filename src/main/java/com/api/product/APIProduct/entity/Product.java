@@ -15,7 +15,7 @@ public class Product{
     private String name;
     @Column
     @NotNull
-    private Double precio;
+    private Double price;
     @Column
     @NotNull
     private Integer quantity;
@@ -23,7 +23,7 @@ public class Product{
     public Product(Long id, String name, Double precio, Integer quantity) {
         this.id = id;
         this.name = name;
-        this.precio = precio;
+        this.price = precio;
         this.quantity = quantity;
     }
 
@@ -47,12 +47,12 @@ public class Product{
         this.name = name;
     }
 
-    public Double getPrecio() {
-        return precio;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setPrecio(Double precio) {
-        this.precio = precio;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
     public Integer getQuantity() {
